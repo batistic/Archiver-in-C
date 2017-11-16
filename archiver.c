@@ -16,7 +16,7 @@
 * Date yy-mm-dd-hh-mm-ss
 * Number of files included
 * Next File Pointer (RRN)
-* 
+*
 * File Header
 * Next File Pointer (RRN)
 * Name Size
@@ -150,7 +150,7 @@ int add(char *archiveName, char *fileName) {
 
   int a;
   int index = 0;
-  unsigned short x; 
+  unsigned short x;
   unsigned char p1, p2;
 
   file = fopen(fileName, "rb");
@@ -202,7 +202,7 @@ int add(char *archiveName, char *fileName) {
       }
       a = fgetc(archive);
     }
-    
+
     // Chegou no ultimo!
 
     a = fgetc(archive);
@@ -221,7 +221,7 @@ int add(char *archiveName, char *fileName) {
   }
 
   // Armazenar tamanho do arquivo em dois bytes
-  
+
   p1 = *((unsigned char*)(&number));
   fputc(p1, archive);
 
@@ -250,7 +250,7 @@ int create(char *name) {
   struct tm tm = *localtime(&t);
 
   //Set Time in header
-  
+
   fputc(tm.tm_year, file);
   fputc(tm.tm_mon + 1, file);
   fputc(tm.tm_mday, file);
@@ -267,6 +267,32 @@ int create(char *name) {
 }
 
 int main(){
+    int opc=-1;
+    while(opc!=0){
+        system("cls");
+        printf("Gerenciador de Archives\n\n");
+        printf("1. Criar archive\n");
+        printf("2. Listar arquivos de um archive\n");
+        printf("3. Extrair arquivo de um archive\n");
+        printf("4. Incluir arquivo em um archive\n");
+        printf("5. Excluir arquivo de um archive\n");
+        printf("0. Sair\n\n-> ");
+        scanf("%d",&opc);
+        switch (opc) {
+            case 1: //criararchive();
+                    break;
+            case 2: //listararchive();
+                    break;
+            case 3: //extrairarquivo();
+                    break;
+            case 4: //incluirarquivo();
+                    break;
+            case 5: //excluirarquivo();
+                    break;
+            case 0: break;
+            default: printf("Digite uma opcao valida\n");
+        }
+    }
   printf("\nSimple C Archiver\nDesigned for ST562\n\nCreating file 'teste.arc'...\n");
 
   //Create teste.arc
